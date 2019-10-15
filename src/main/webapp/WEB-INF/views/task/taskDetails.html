@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:sec="http://www.springframework.org/security/tags">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/custom.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+</div>
+<h2>Task Information</h2>
+
+<a 
+         th:href="@{|${task.id}/edit|}" 
+         th:if="${showWarningMsg}">This user already have two or more tasks assigned. Consider re assigning this task to someone else.</a>
+         <br/>
+         <label style="color: red"
+         th:if="${errorMsg}">This task was not saved successfully</label>
+         
+         <label style="color: red"
+         th:if="${task.important}">This task is marked as important by admin.</label>
+         
+    <table class="table table-striped" style="width:600px;">
+        <tr>
+            <th>Name</th>
+            <td><b th:text="|${showWarningMsg}|">[firstname lastname]</b></td>
+        </tr>
+          <tr>
+            <th>Description</th>
+            
+            <td th:text="${task.description}">[telephone]</td>
+        </tr>
+        <tr>
+            <th>Asignee	</th>
+            <td th:text="${task.assigneeId.email}">[address]</td>
+        </tr>
+        <tr>
+            <th>Short Name</th>
+            <td th:text="${task.shortName}">[city]</td>
+        </tr>
+        <tr>
+            <th>Due date</th>
+            
+            <td th:text="${#calendars.format(task.dueDate,'dd MMMM yyyy')}">[telephone]</td>
+        </tr>
+      
+         <tr>
+            <td> 
+            	<a th:href="@{|${task.id}/edit|}"  class="custom-button aui-button">Edit task</a>
+            	</td>
+            	
+            	 <td sec:authorize="hasRole('ADMIN')"> 
+            	<a th:href="@{|${task.id}/important|}"  class="custom-button aui-button">Mark as important</a>
+            	</td>
+            	
+            	 <td sec:authorize="hasRole('ADMIN')"> 
+            	<a th:href="@{|${task.id}/notImportant|}"  class="custom-button aui-button">Mark as not important</a>
+            	</td>
+            	
+            	 <td> 
+            	<a th:href="@{|${task.id}/changeLog|}"  class="custom-button aui-button">Change Log</a>
+            	</td>
+        </tr>
+        
+        
+        
+        
+    </table>
+<!-- creationDate -->
+<!-- ${comment.author.fullName} -->
+<!-- ${comment.shortName} -->
+
+	<table>
+		<tr th:each="comment : ${list}" >
+			<td>
+				<div class="panel panel-default panel-custom">
+		<div class="panel-body"><p> <span th:text="${comment.author.fullName}" class="comment-header-font"></span> commented on <span th:text="${#calendars.format(comment.creationDate,'dd MMMM yyyy')}" class="comment-header-font"> </span>  </p></div>
+			<div class="panel-footer"> <p th:text="${comment.content}" > </p> </div>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+/////////////////////////////////////////////////////////////////
+<form th:object="${newComment}" th:method="post" th:action="@{|/task/addComment/${id}|}"
+        class="form-horizontal" id="add-owner-form">
+        		
+    
+    
+<!--         <div class="control-group" th:classappend="${#fields.hasErrors('assigneeId')} ? error"> -->
+           <textarea th:field="*{content}">...</textarea>
+           <br/>
+<!--         </div> -->
+<!-- <a th:href="@{|/task/addComment/${id}|}"  class="custom-button aui-button">Comment</a> -->
+<button type="submit"  class="custom-button aui-button">Comment</button>
+    </form>
+    
+    /////////////////////////////////////////
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/custom.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+</div>
+<h2>Task Information</h2>
+
+    <table class="table table-striped" style="width:600px;">
+        <tr>
+            <th>Name</th>
+            <td><b th:text="|${user.fullName}|">[firstname lastname]</b></td>
+        </tr>
+          <tr>
+            <th>Description</th>
+            
+            <td th:text="${user.role}">[telephone]</td>
+        </tr>
+        <tr>
+            <th>Asignee	</th>
+            <td th:text="${user.email}">[address]</td>
+        </tr>
+      
+        
+    </table>
+<!-- creationDate -->
+<!-- ${comment.author.fullName} -->
+<!-- ${comment.shortName} -->
+
+	<table>
+		<tr th:each="task : ${tasks}" >
+			<td>
+				<div class="panel panel-default panel-custom">
+		<div>
+		 <a th:href="@{|/task/${task.id}|}" th:text="${task.name}"></a>
+		</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>

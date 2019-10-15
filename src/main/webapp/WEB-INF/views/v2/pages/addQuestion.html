@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<h3>Add Question</h3>
+
+<div class="col-lg-6">
+	<form role="form" th:object="${question}" th:method="post">
+	<br/>
+	<div>
+		<label class="control-label">Question Text</label>
+		<textarea class="form-control js-validate-not-empty" rows="3"></textarea>
+	</div>
+	
+		<br />
+		<div>
+		<label class="control-label">Question Tags</label>
+		<select th:field="*{questionTags}" class="form-control js-drop-down-add-to-list" id="tags-drop-down">
+			<option th:each="type : ${arrList}" th:value="${type}" th:text="${type}">Wireframe</option>
+		</select>
+
+
+		<div class="panel-body  js-selected-items-panel" style="display: none;" id="tags">
+			<h4>Selected Tags</h4>
+			<div class="js-selected-tags">
+			</div>
+		</div>
+		</div>
+
+		<!--<br />-->
+		<!--<div>-->
+		<!--<label  class="control-label">Question Type</label>-->
+		<!--<select class="form-control" id="question-type-drop-down">-->
+			<!--<option value=""></option>-->
+			<!--<option value="PLAIN_TEXT">Plain Text</option>-->
+			<!--<option value="MULTIPLE_CHOICE">Multiple Choice</option>-->
+		<!--</select>-->
+		<!--</div>-->
+		<!--<br />-->
+
+		<!--<div id="multiple-choice" style="display: none;">-->
+			<!--<div id="choiseOptions">-->
+				<!--<label class="control-label">Question Possible Answers</label>-->
+				<!--<br/>-->
+				<!--<div class='js-multiple-choice-option' >-->
+					<!--<input class='form-control js-multiple-choice-answer' placeholder="Enter text" />-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<br />-->
+
+			<!--<button type="button" class="glyphicon-plus btn btn-default" id="dddsssssaaa"></button>-->
+		<!--</div>-->
+		<br />
+		<button type="button" class="btn btn-primary js-save-question">Save Question</button>
+		<!-- 						</div> -->
+		<!-- <button  th:text="Save">Add row</button> -->
+	</form>
+</div>
+
+<script src="resources/dist/js/add.js"></script>
+<script src="resources/dist/js/common.js"></script>
+
+
+
+</html>

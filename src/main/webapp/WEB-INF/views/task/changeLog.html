@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/custom.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+        
+<!--     </table> -->
+
+<h2>
+<p th:text="${task.name}" class="comment-header-font"> </p>
+</h2>
+<br/>
+
+	<table>
+		<tr th:each="change : ${list}" >
+			<td>
+				<div class="panel panel-default panel-custom">
+		<div class="panel-body"><p> <span th:text="${change.columnName}" class="comment-header-font"></span> was changed on <span th:text="${#calendars.format(change.tstamp,'dd MMMM yyyy')}" class="comment-header-font"> </span>  </p></div>
+			<div class="panel-footer"> <p> from <span th:text="${change.oldValue}" class="comment-header-font" style="font-style: italic;"></span> to <span th:text="${change.newValue}" class="comment-header-font" style="font-style: italic;"> </span>  </p>
+			 </div>
+				</div>
+			</td>
+		</tr>
+	</table>
+
+<!-- ///////////////////////////////////////////////////////////////// -->
+    /////////////////////////////////////////
+</body>
+</html>

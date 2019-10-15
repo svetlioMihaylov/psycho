@@ -1,0 +1,71 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+</div>
+
+
+<!-- <div class="row" style="padding-bottom:20px "> -->
+<!--   <div class="col-md-4"></div> -->
+<!--   <div class="col-md-1"> <a href="addUser" class="btn btn-primary">Create User</a> -->
+<!--   </div> -->
+<!--   <div class="col-md-1"></div> -->
+<!--   <div class="col-md-1"><a href="task/addTask" class="btn btn-primary">Create Task</a></div> -->
+<!-- </div> -->
+
+<div class="row" style="padding-left:20px ">
+  <div class="col-md-6" >
+  
+  <table style="margin: auto;">
+  <h3 style = "text-align: center;">Users</h3>
+		<tr th:each="user : ${usersList}" >
+			<td>
+				<div class="panel panel-default panel-custom " >
+		<div > <a th:href="@{|/user/${user.email}|}" th:text="${user.fullName}" style="margin: auto"></a> </div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	</div>
+  <div class="col-md-6">
+  
+  <table style="margin: auto;">
+  <div style="margin: auto;">
+  <h3 style = "text-align: center;">Tasks</h3>
+  </div>
+		<tr th:each="task : ${tasksList}" >
+			<td>
+				<div class="panel panel-default panel-custom">
+<!-- 		<div class="panel-body"> <span th:text="${user.fullName}" class="comment-header-font"> </span> </div> -->
+		<div> <a th:href="@{|/task/${task.id}|}" th:text="${task.name}"></a> </div>
+<!-- 			<div class="panel-footer"> <p th:text="${comment.content}" > </p> </div> -->
+				</div>
+			</td>
+		</tr>
+	</table>
+  
+  </div>
+  
+  
+</div>
+    
+    
+      
+</body>
+</html>

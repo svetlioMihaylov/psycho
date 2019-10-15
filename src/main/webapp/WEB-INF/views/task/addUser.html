@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+</div>
+
+
+<!-- <form th:object="${task}" th:method="post" action="./../../task/update" -->
+<form th:object="${user}" th:method="post" action="addUserPost"
+        class="form-horizontal" id="add-owner-form">
+        		
+        
+    
+        
+        <input type="hidden"   th:field="*{id}" />
+        
+        <label style="color: red"
+         th:if="${errorMsg}">This user was not saved successfully. The e-mail address is already in use!</label>
+    
+        <div class="control-group" th:classappend="${#fields.hasErrors('fullName')} ? error">
+            <label class="control-label">Full Name</label>
+            <div class="controls">
+                <input type="text" th:field="*{fullName}" />
+                <span class="help-inline" th:errors="*{fullName}">[error]</span>
+            </div>
+        </div>
+    
+        <div class="control-group" th:classappend="${#fields.hasErrors('email')} ? error">
+            <label class="control-label">E-mail</label>
+            <div class="controls">
+                <input type="text" th:field="*{email}" />
+                <span class="help-inline" th:errors="*{email}">[error]</span>
+            </div>
+        </div>
+        
+        <div class="control-group" th:classappend="${#fields.hasErrors('password')} ? error">
+            <label class="control-label">Password</label>
+            <div class="controls">
+                <input type="password" th:field="*{password}"/>
+                <span class="help-inline" th:errors="*{password}">[error]</span>
+            </div>
+        </div>
+        
+        <select th:field="*{role}">
+  <option th:each="type : ${T(com.task.tracker.DAO.impl.USER_ROLE).values()}" 
+          th:value="${type}" 
+          th:text="${type}">Wireframe</option>
+</select>
+    
+<button type="submit" th:text="Save">Add row</button>
+    </form>
+    
+    
+      
+</body>
+</html>

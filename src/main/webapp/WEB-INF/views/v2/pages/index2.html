@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!-- <html lang="en" xmlns:th="http://www.thymeleaf.org"> -->
+
+<html xmlns:sec="http://www.springframework.org/security/tags">
+
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>SB Admin 2 - Bootstrap Admin Theme</title> 
+
+<!-- Bootstrap Core CSS -->
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- MetisMenu CSS -->
+<link href="resources/css/metisMenu.min.css" rel="stylesheet" />
+
+<link href="resources/css/metisMenu.min.css" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="resources/css/sb-admin-2.css" rel="stylesheet" />
+
+<!-- Morris Charts CSS -->
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+
+
+
+<!-- DataTables CSS -->
+    <link href="resources/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <!-- DataTables Responsive CSS -->
+    <link href="resources/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" />
+    
+    <!-- Custom  CSS -->
+	<link href="resources/dist/css/testGenerator.css" rel="stylesheet" />
+
+<!-- Custom Fonts -->
+<link href="resources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Interview Assistant</a>
+			</div>
+			<!-- /.navbar-header -->
+
+			<ul class="nav navbar-top-links navbar-right">
+				<!-- /.dropdown -->
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="logout"><i class="fa fa-sign-out fa-fw"></i>
+								Logout</a></li>
+					</ul> <!-- /.dropdown-user --></li>
+				<!-- /.dropdown -->
+			</ul>
+			<!-- /.navbar-top-links -->
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+				<div sec:authorize="hasRole('ADMIN')">
+					<ul class="nav" id="side-menu">
+
+						<li class ="js-add-question"><a href="#"><i class="fa fa-fw "></i>
+								Add Question</a></li>
+						<li class = "js-create-test"><a href="#"><i class="fa fa-fw"></i>
+								Create Test</a></li>
+<!-- 						<li class = "js-review-test"><a href="#"><i class="fa fa-fw"></i> -->
+<!-- 								Review test</a></li> -->
+						<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
+								Tests for Review<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level" >
+							</ul>
+							</li>
+							<li class = "js-create-user"><a href="#"><i class="fa fa-fw"></i>
+								Create User</a></li>
+								<li class = "js-add-tag"><a href="#"><i class="fa fa-fw"></i>
+								Create Tag</a></li>
+					</ul>
+					</div>
+						<div sec:authorize="hasRole('EMPLOYEE')">
+					<ul class="nav" id="side-menu">
+
+						<li class ="js-add-question"><a href="#"><i class="fa fa-fw "></i>
+								Add Question</a></li>
+						<li class = "js-create-test"><a href="#"><i class="fa fa-fw"></i>
+								Create Test</a></li>
+<!-- 						<li class = "js-review-test"><a href="#"><i class="fa fa-fw"></i> -->
+<!-- 								Review test</a></li> -->
+						<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
+								Tests for Review<span class="fa arrow"></span></a>
+							<ul class="nav nav-second-level" >
+							</ul>
+							</li>
+
+					</ul>
+					</div>
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+
+		<div id="page-wrapper">
+		
+		<div class="row">
+		
+		<div class="alert alert-dismissable" id="alert" >
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <label id="aler-label"></label>
+        </div>
+        
+		</div>
+		
+			<div class="row">
+				<div class="col-lg-12">
+				<div sec:authorize="hasRole('ADMIN')">
+					
+				</div>
+				</div>
+				
+
+				<!-- /.col-lg-12 -->
+			</div>
+
+			<div class="row">
+			<div id="targetid"> 
+				
+			</div>
+				
+			</div>
+			
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+	<script src="resources/dist/js/jquery-3.2.1.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
+	<!-- Custom Question Generaror js -->
+	
+	<script src="resources/dist/js/questionGenerator.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="resources/dist/js/sb-admin-2.js"></script>
+	
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="resources/vendor/metisMenu/metisMenu.min.js"></script>
+	
+	
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{view.index.title}">Welcome!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
+<div class="container">
+    <!-- /* Handle the flash message */-->
+    <th:block th:if="${message != null}">
+        <!-- /* The message code is returned from the @Controller */ -->
+        <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
+    </th:block>
+    <p>
+        Welcome to the Spring MVC Quickstart application!
+    </p>
+</div>
+th:text="${number}"
+<a th:href="@{|/task/${number}|}" th:text="${number}">asd</a>
+
+<a href="url">th:text="${number}"</a>
+
+<table>
+      <tr>
+          <td th:text="${number}">1</td>
+        <th colspan="1" rowspan="1">NAME</th>
+        <th colspan="1" rowspan="1">PRICE</th>
+        <th colspan="1" rowspan="1">IN STOCK</th>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">Fresh Sweet Basil</td>
+        <td colspan="1" rowspan="1">4.99</td>
+        <td colspan="1" rowspan="1">yes</td>
+      </tr>
+      <tr class="odd">
+        <td colspan="1" rowspan="1">Italian Tomato</td>
+        <td colspan="1" rowspan="1">1.25</td>
+        <td colspan="1" rowspan="1">no</td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">Yellow Bell Pepper</td>
+        <td colspan="1" rowspan="1">2.50</td>
+        <td colspan="1" rowspan="1">yes</td>
+      </tr>
+      <tr class="odd">
+        <td colspan="1" rowspan="1">Old Cheddar</td>
+        <td colspan="1" rowspan="1">18.75</td>
+        <td colspan="1" rowspan="1">yes</td>
+      </tr>
+    </table>
+    
+    
+</body>
+</html>

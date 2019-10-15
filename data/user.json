@@ -1,0 +1,11 @@
+[
+    {
+        "className": "com.interview.questions.db.entities.UserModel",
+        "lastName": "Mihaylov",
+        "email": "asd@asd.ad",
+        "role": "ADMIN",
+        "salt": "3f3h9q7qnp22id8m6km3gqiath",
+        "password": "$2a$10$h3y.L67zfa6vBZpNDo1K3elaYZgejjcoblwSfOTP3g28SLleJwrou",
+        "firstName": "Mihail"
+    }
+]

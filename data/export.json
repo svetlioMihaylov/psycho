@@ -1,0 +1,9 @@
+{
+  "_id":{"$oid":"5d8f5c9de2687e520833c820"},
+  "className":"com.interview.questions.db.entities.UserModel",
+  "lastName":"Mihaylov",
+  "email":"asd@asd.ad",
+  "role":"ADMIN",
+  "salt":"$2a$10$h3y.L67zfa6vBZpNDo1K3elaYZgejjcoblwSfOTP3g28SLleJwrou",
+  "firstName":"Mihail"
+}

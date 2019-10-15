@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>SB Admin 2 - Bootstrap Admin Theme</title> 
+
+<!-- Bootstrap Core CSS -->
+<link href="/my-artifactId/resources/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- MetisMenu CSS -->
+<link href="/my-artifactId/resources/css/metisMenu.min.css" rel="stylesheet" />
+
+<!-- Custom CSS -->
+<link href="/my-artifactId/resources/css/sb-admin-2.css" rel="stylesheet" />
+
+<!-- Morris Charts CSS -->
+<link href="/my-artifactId/resources/vendor/morrisjs/morris.css" rel="stylesheet" />
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" />
+
+
+
+<!-- DataTables CSS -->
+    <link href="/my-artifactId/resources/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/my-artifactId/resources/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" />
+    
+    
+
+<!-- Custom Fonts -->
+<link href="/my-artifactId/resources/vendor/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-default navbar-static-top" role="navigation"
+			style="margin-bottom: 0">
+<!-- 			<button class="btn btn-primary btn-lg">sda</button> -->
+			
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+<!-- 				<a class="navbar-brand" href="index.html">SB Admin v2.0</a> -->
+<!-- 				<button class="navbar-brand btn btn-primary btn-lg">sda</button> -->
+			</div>
+
+<div class="nav navbar-top-links navbar-right">
+			<button class="btn btn-primary pull-right btn-lg js-finish-test">Submit Test</button>
+
+</div>
+
+
+
+
+			<div class="navbar-default sidebar" role="navigation">
+				<div class="sidebar-nav navbar-collapse">
+					<ul class="nav" id="side-menu">
+						<li>
+							<h4>Quesitons</h4>
+						</li>
+					</ul>
+				</div>
+				<!-- /.sidebar-collapse -->
+			</div>
+			<!-- /.navbar-static-side -->
+		</nav>
+
+		<div id="page-wrapper">
+		
+		<div class="row">
+		
+        
+		</div>
+		
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="page-header">Test</h2>
+					
+					<div class="alert alert-dismissable" id="alert" >
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <label id="aler-label"></label>
+        </div>
+        
+					
+					      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+<!--                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+                                            <h4 class="modal-title" id="myModalLabel">Please enter the email you have used when applied for the possition</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <input class='form-control js-multiple-choice-answer' placeholder="user@example.com" type="email"/>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary js-validate-user">Submit</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            
+                            <div id="dashboard">
+                            <form role="form" method="post">
+                            	<h5><label></label></h5>
+                            	<br/>
+                            	<textarea class="form-control" rows="3"></textarea>
+                            	<div class="js-multiple-choice"></div>
+                            	
+                            	<br/>
+                            	<br/>
+                            	<button type="button" class="btn btn-primary js-save-answer">Save</button>
+                            	</form>
+                            </div>
+                            
+					
+					<div class="modal fade" id="completeTestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">Are you sure you want to submit your test.<snap><br/></snap> Once the test is submitted you won't be able to edit the answers</h4>
+                                        </div>
+<!--                                         <div class="modal-body"> -->
+<!--                                         </div> -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary js-complete-test">OK</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" >Cancel</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+					
+				</div>
+				
+
+			</div>
+
+			<div class="row">
+			<div id="targetid"> 
+				
+			</div>
+				
+			</div>
+			
+			<!-- /.row -->
+		</div>
+		<!-- /#page-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+	<script src="/my-artifactId/resources/dist/js/jquery-3.2.1.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/my-artifactId/resources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+
+
+	
+	<!-- Custom Resolve Test js -->
+	
+	<script src="/my-artifactId/resources/dist/js/resolveTest.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="/my-artifactId/resources/dist/js/sb-admin-2.js"></script>
+	
+	<!-- Metis Menu Plugin JavaScript -->
+	<script src="/my-artifactId/resources/vendor/metisMenu/metisMenu.min.js"></script>
+	
+	
+</body>
+
+</html>
