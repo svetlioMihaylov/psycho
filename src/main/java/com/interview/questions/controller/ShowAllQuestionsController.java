@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.interview.questions.db.entities.TestModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class ShowAllQuestionsController {
     @RequestMapping(value = "showAllQuestions", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @Scope("session")
-    public @ResponseBody ModelAndView showAllQuestions(@PathVariable(value="questionId") int questionId, HttpSession session)
+    public @ResponseBody ModelAndView showAllQuestions(HttpSession session)
     {
         ModelAndView modelAndView = new ModelAndView("v2/pages/showAllQuestions");
         QuestionModel question = new QuestionModel();
@@ -38,4 +39,24 @@ public class ShowAllQuestionsController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "showQuesiton/{questionId}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @Scope("session")
+    public @ResponseBody QuestionBean showAllQuestions(@PathVariable(value="questionId") int questionId, HttpSession session)
+    {
+        QuestionBean questionBean = testService.getQuestionBean(questionId, session);
+        return questionBean;
+    }
+
+    @RequestMapping(value = "showTestdata", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    @Scope("session")
+    public @ResponseBody TestBean  showTest( HttpSession session)
+    {
+        TestModel test= (TestModel) session.getAttribute("reviewTest");
+        TestBean populateBean = testService.populateBean(test);
+        return populateBean;
+    }
+
 }
