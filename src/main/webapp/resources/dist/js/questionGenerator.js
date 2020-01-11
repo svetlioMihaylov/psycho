@@ -7,6 +7,11 @@ $(".js-create-test").on("click", function(){
     $("#targetid").load("createTest");
 });
 
+$(".js-show-questions").on("click", function(){
+    console.log("show all question");
+    $("#targetid").load("showAllQuestions");
+});
+
 $(".js-create-test").on("click", function(){
     $("#targetid").load("createTest");
 });
@@ -19,24 +24,24 @@ $(".js-add-tag").on("click", function(){
     $("#targetid").load("createTag");
 });
 
-$.ajax({
-	'url': 'testsForReview',
-    'headers': { 
-    	'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    'type': 'GET',
-    success:function(result) {
-    	
-    	$.each(result, function(index, test) { 
-    		$('.nav-second-level').append('<li><a class= "js-review-test" href="#" data= "' + test.key + '">' + test.value + '</a></li>');
-    	})
-    	
-    	$(".js-review-test").on("click", function(){
-    	    $("#targetid").load("reviewTest/" + $(this).attr('data'));
-    	});
-}
-})
+//$.ajax({
+//	'url': 'testsForReview',
+//    'headers': {
+//    	'Accept': 'application/json',
+//        'Content-Type': 'application/json'
+//    },
+//    'type': 'GET',
+//    success:function(result) {
+//
+//    	$.each(result, function(index, test) {
+//    		$('.nav-second-level').append('<li><a class= "js-review-test" href="#" data= "' + test.key + '">' + test.value + '</a></li>');
+//    	})
+//
+//    	$(".js-review-test").on("click", function(){
+//    	    $("#targetid").load("reviewTest/" + $(this).attr('data'));
+//    	});
+//}
+//})
 
 $('#alert').hide();
 
